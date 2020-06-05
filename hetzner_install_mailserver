@@ -1,0 +1,106 @@
+Introduction
+
+iRedMail is a mature mail server system. 
+It has excellent performance, comprehensive and practical functions, 
+and is easy to build and has good community support. 
+Today we introduce the installation and configuration of the iRedMail mail server system 
+in the Ubuntu 20.04 LTS 64 bit operating system 
+to implement practical functions such as domain name mailboxes, spam filtering, virus detection, etc.
+
+
+Prerequisites
+server: Ubuntu 20.04
+
+This tutorial is based on Ubuntu 20.04 LTS 64 bit operating system. 
+You can also follow this tutorial on Ubuntu 18.04 LTS 64 bit operating system, most steps are similar.
+The operation of Debian 9/10 system is slightly different, you can try it yourself.
+
+To build an iRedMail system, at least 1.5 GB of memory (2 GB or more is recommended) and 5 GB hard disk are required.
+
+Sending mail requires port 25 to be open!!!
+
+Before building, you need to make the following preparations:
+
+1. Mail server domain name  .e.g  maildemo.com
+2. Preparing for DNS resolution and MX records. rDNS. etc.
+3. Set the hostname
+
+After making these preparations, we can start to install the iRedMail system.
+
+We use git to install the iRedMail system. carried out:
+
+apt-get update && apt-get upgrade -y
+apt-get install git -y
+git clone https://github.com/iredmail/iRedMail.git
+cd iRedMail
+bash iRedMail.sh
+
+The system will automatically start the installation. 
+The following situations will appear during the installation process, 
+you need to set them according to your own information in turn.
+
+First, you need to specify the installation directory, 
+as shown below. Here you can keep the default /var/vmail, 
+or you can set it to /srv/vmail, etc., 
+according to your personal preferences; 
+do not set it in the /home directory.
+
+https://s3.jpg.cm/2020/06/05/X7dMD.png
+
+The second step requires you to choose whether to install the web server. 
+If you only need the client to send and receive messages, 
+you can not install the web server. In other cases,
+it is recommended to install Nginx. Press Enter to enter the next step.
+
+https://s3.jpg.cm/2020/06/05/X77u4.png
+
+The third step is to choose the database to use. 
+Here we choose the relatively simple MariaDB. 
+Use the arrow keys to select MariaDB, 
+press the space bar to select, and then press Enter to enter the next step.
+
+https://s3.jpg.cm/2020/06/05/X7QBX.png
+
+The fourth step is to set the root user password for MariaDB, 
+after entering, press Enter to continue.
+
+https://s3.jpg.cm/2020/06/05/X75RG.png
+
+The next step is very important, 
+we have to set up the first domain name for sending emails.
+If your mail server domain name is mx.qing.su, then you can set it to qing.su
+
+https://s3.jpg.cm/2020/06/05/X7IkC.png
+
+Then, we set the management password for the administrator mailbox. 
+Please keep in mind that if your domain name is example.com,
+the administrator email address is postmaster@example.com.
+
+https://s3.jpg.cm/2020/06/05/X7RQR.png
+
+In the last step of setting,
+we need to select the installed function.
+By default, Roundcubemail + netdata + iRedAdmin + Fail2ban can be selected. 
+SOGo does not have a Roundcube that is easy to use. 
+If you like this higher-end panel, you can also install it
+
+https://s3.jpg.cm/2020/06/05/X7qSz.png
+
+After the setting is complete, 
+the information will be listed on the screen,
+we enter y to confirm the installation.
+
+https://s3.jpg.cm/2020/06/05/X7L9t.png
+
+The installation takes about 10 minutes. After all are installed,
+the system will prompt whether to set firewall rules, we can enter y to confirm.
+
+https://s3.jpg.cm/2020/06/05/X7W3u.png
+
+In this way, iRedMail is installed. Before starting the configuration, we need to restart the server.
+
+reboot
+
+Completed, please do not use it for spam, thx u
+
+
